@@ -1,4 +1,5 @@
 import React from "react";
+import { Segment, Form, Button } from "semantic-ui-react";
 
 class HandleInput extends React.Component {
   state = {
@@ -20,10 +21,19 @@ class HandleInput extends React.Component {
   render() {
     const { handleInput } = this.state;
     return (
-      <form onSubmit={this.submitHandle}>
-        <input type="text" value={handleInput} onChange={this.handleChange} />{" "}
-        <button type="submit"> submit </button>
-      </form>
+      <Segment>
+        <Form onSubmit={this.submitHandle}>
+          <Form.Field>
+            <label>Handle</label>
+            <input
+              type="text"
+              value={handleInput}
+              onChange={this.handleChange}
+            />
+          </Form.Field>
+          <Button type="submit"> submit </Button>
+        </Form>
+      </Segment>
     );
   }
 }

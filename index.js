@@ -22,30 +22,22 @@ const getWords = (req, res) => {
     screen_name: req.params.handle,
     trim_user: true,
     exclude_replies: true,
-    count: 500
+    count: 200
   };
 
   twitterCli
     .get("statuses/user_timeline", params)
     .then(tweets => {
-      const words = tweets
-        .reduce((arr, tweet) => [...arr, ...tweet.text.split(" ")], [])
-        .filter(word => !stopwords.includes(word.toLowerCase()));
-
-      // const wordsWithCount = words.reduce(
-      //   (map, word) =>
-      //     word in map
-      //       ? { ...map, [word]: map[word] + 1 }
-      //       : { ...map, [word]: 1 },
-      //   Object.create(null)
-      // );
-
-      // console.log(wordsWithCount);
+      console.log(`got ${tweets.length} tweets`);
+      const words = tweets.reduce(
+        (arr, tweet) => [...arr, ...tweet.text.split(" ")],
+        []
+      );
       res.send(words);
     })
     .catch(err => {
       console.log(err);
-      res.status(500).send(err);
+      res.status(500).json({ text: "could not fetch tweets" });
     });
 };
 

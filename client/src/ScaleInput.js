@@ -1,14 +1,13 @@
 import React from "react";
-
-const ScaleInput = ({ value, handleChange }) => (
-  <input
-    name="scale"
-    type="number"
-    value={value}
-    min="10"
-    max="50"
-    onChange={handleChange}
-  />
+import { Segment, Header, Button } from "semantic-ui-react";
+const ScaleInput = ({ value, incScale, decScale }) => (
+  <Segment>
+    <Header as="h2" floated="left">
+      scale: {value}
+    </Header>
+    <Button onClick={incScale}> + </Button>
+    <Button onClick={decScale}> - </Button>
+  </Segment>
 );
 
 export default ScaleInput;
