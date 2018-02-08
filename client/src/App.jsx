@@ -48,15 +48,12 @@ class App extends Component {
         });
       })
       .catch(err => {
-        if (err && err.response && err.response.data) {
-          console.log(err.response.data.text);
-          this.setState({
-            fetching: false,
-            error: err.response.data.text
-          });
-        } else {
-          console.log(err);
-        }
+        console.log(err);
+
+        this.setState({
+          fetching: false,
+          error: "could not fetch tweets"
+        });
       });
   };
 
@@ -75,7 +72,6 @@ class App extends Component {
   };
 
   selectWord = word => {
-    console.log(word);
     this.setState({
       selectedWord: word
     });
@@ -118,7 +114,7 @@ class App extends Component {
           {fetching ? (
             <Loader active> Fetching Tweets... </Loader>
           ) : error ? (
-            "Could not fetch tweets"
+            { error }
           ) : (
             <WordCloud
               wordPairs={wordPairs}
