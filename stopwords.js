@@ -159,6 +159,7 @@ module.exports = [
   "where's",
   "which",
   "while",
+  "will",
   "who",
   "who's",
   "whom",

@@ -1,9 +1,12 @@
 // require "dotenv" to access process.env variables from the local .env file
 require("dotenv").config();
 
+const path = require("path");
 const Twitter = require("twitter");
 const express = require("express");
 const app = express();
+const morgan = require("morgan");
+app.use(morgan("tiny"));
 
 const stopwords = require("./stopwords");
 
@@ -27,18 +30,18 @@ const getWords = (req, res) => {
     .then(tweets => {
       const words = tweets
         .reduce((arr, tweet) => [...arr, ...tweet.text.split(" ")], [])
-        .filter(word => !stopwords.includes(word));
+        .filter(word => !stopwords.includes(word.toLowerCase()));
 
-      const wordsWithCount = words.reduce(
-        (dict, word) =>
-          word in dict
-            ? { ...dict, [word]: dict[word] + 1 }
-            : { ...dict, [word]: 1 },
-        Object.create(null)
-      );
+      // const wordsWithCount = words.reduce(
+      //   (map, word) =>
+      //     word in map
+      //       ? { ...map, [word]: map[word] + 1 }
+      //       : { ...map, [word]: 1 },
+      //   Object.create(null)
+      // );
 
-      console.log(wordsWithCount);
-      res.send(wordsWithCount);
+      // console.log(wordsWithCount);
+      res.send(words);
     })
     .catch(err => {
       console.log(err);
@@ -46,6 +49,13 @@ const getWords = (req, res) => {
     });
 };
 
-app.get("/:handle", getWords);
+app.get("/words/:handle", getWords);
 
-app.listen(3001, () => console.log("Server Listening"));
+// For any request that doesn't match the one above,
+// send back React's index.html file.
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build/index.html"));
+});
+
+const port = process.env.PORT || 3001;
+app.listen(port, () => console.log(`Listening on port ${port}`));
