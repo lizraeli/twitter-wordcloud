@@ -1,0 +1,24 @@
+{
+  "name": "twitter-wordcloud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lizraeli/twitter-wordcloud.git"
+  },
+  "author": "Lev Izraelit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lizraeli/twitter-wordcloud/issues"
+  },
+  "homepage": "https://github.com/lizraeli/twitter-wordcloud#readme",
+  "dependencies": {
+    "dotenv": "^5.0.0",
+    "express": "^4.16.2",
+    "twitter": "^1.7.1"
+  }
+}
