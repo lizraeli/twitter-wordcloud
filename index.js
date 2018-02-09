@@ -8,8 +8,6 @@ const app = express();
 const morgan = require("morgan");
 app.use(morgan("tiny"));
 
-const stopwords = require("./stopwords");
-
 const twitterCli = new Twitter({
   consumer_key: process.env.consumer_key,
   consumer_secret: process.env.consumer_secret,

@@ -4,7 +4,7 @@ Generates a word cloud from a twitter timeline.
 
 ## Local Installation
 
-The project contains both the server and client code.
+The project contains both the server and client code. The server runs node
 
 ### Installing the Server Code
 
