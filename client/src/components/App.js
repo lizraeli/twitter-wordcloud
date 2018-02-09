@@ -120,7 +120,7 @@ class App extends Component {
             />
           )}
 
-          <WordInfo selectedWord={selectedWord} />
+          {wordPairs.length !== 0 && <WordInfo selectedWord={selectedWord} />}
         </Segment>
       </Container>
     );
