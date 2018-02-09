@@ -38,7 +38,7 @@ const getWords = (req, res) => {
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json({ text: "could not fetch tweets" });
+      res.status(400).json({ text: "could not fetch tweets" });
     });
 };
 

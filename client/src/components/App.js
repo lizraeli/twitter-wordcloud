@@ -111,7 +111,7 @@ class App extends Component {
           {fetching ? (
             <Loader active> Fetching Tweets... </Loader>
           ) : error ? (
-            { error }
+            "could not fetch tweets"
           ) : (
             <WordCloud
               wordPairs={wordPairs}
