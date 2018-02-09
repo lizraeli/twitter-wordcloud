@@ -4,7 +4,7 @@ import { Container, Segment, Loader, Header } from "semantic-ui-react";
 
 import stopWords from "../stopwords";
 import HandleInput from "./HandleInput";
-import ScaleInput from "./ScaleInput";
+import ZoomInput from "./ZoomInput";
 import WordCloud from "./WordCloud";
 import WordInfo from "./WordInfo";
 
@@ -95,7 +95,7 @@ class App extends Component {
           </Header>
         </Segment>
         <HandleInput submitHandle={this.submitHandle} />
-        <ScaleInput
+        <ZoomInput
           value={scale}
           incScale={this.incScale}
           decScale={this.decScale}
