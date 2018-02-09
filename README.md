@@ -8,11 +8,10 @@ The project contains a Node server and React client code.
 
 ### Installing the Server Code
 
-Install the server code and start the server from the root directory:
+Install the server code from the root directory:
 
-```bash
+```js
 npm install
-npm start
 ```
 
 The server connects to the twitter API. This requires a consumer key, consumer secret, access token key, and access_token_secret. Once you have obtained these, place them in `.env` file in the root directory as follows:
@@ -36,8 +35,13 @@ The client code is located inside the `client/` directory.
 ```bash
 cd client
 npm install
-npm start
 ```
+
+### Development Mode
+
+When developing the client code, start both the node server (on port `3001`) in the root folder, and the webpack-dev-server (on port `3000`) in the client folder. This will allows for hot-reloading of the client code. For ajax requests The weboack-dev-server server will work as a proxy between the client and the node server.
+
+Hot-reloading of the node server code may be done with a global nodemon installation, by simply running `nodemon` in the root directory.
 
 ### Tech
 
