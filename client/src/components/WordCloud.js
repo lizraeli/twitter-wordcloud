@@ -1,5 +1,5 @@
 import React from "react";
-import { makeFontSizeMapper } from "./utils";
+import { makeFontSizeMapper } from "../utils/utils";
 import WordCloud from "react-d3-cloud";
 import "./wordcloud.css";
 

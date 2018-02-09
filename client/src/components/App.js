@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Container, Segment, Loader, Header } from "semantic-ui-react";
 
-import stopWords from "./stopwords";
+import stopWords from "../stopwords";
 import HandleInput from "./HandleInput";
 import ScaleInput from "./ScaleInput";
 import WordCloud from "./WordCloud";
 import WordInfo from "./WordInfo";
 
-import { makeWordMap, wordMapToPairs } from "./utils";
+import { makeWordMap, wordMapToPairs } from "../utils/utils";
 
 class App extends Component {
   constructor() {
@@ -17,7 +17,7 @@ class App extends Component {
     this.state = {
       fetching: false,
       error: "",
-      scale: 5,
+      scale: 8,
       handle: "",
       wordPairs: [],
       selectedWord: null
@@ -87,7 +87,6 @@ class App extends Component {
       selectedWord
     } = this.state;
 
-    console.log(this.state);
     return (
       <Container>
         <Segment>
@@ -103,8 +102,6 @@ class App extends Component {
         />
 
         <Segment>
-          <WordInfo selectedWord={selectedWord} />
-
           {handle && (
             <Header as="h2" textAlign="center">
               @{handle}
@@ -122,6 +119,8 @@ class App extends Component {
               onWordClick={this.selectWord}
             />
           )}
+
+          <WordInfo selectedWord={selectedWord} />
         </Segment>
       </Container>
     );
