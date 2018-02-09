@@ -8,6 +8,9 @@ const app = express();
 const morgan = require("morgan");
 app.use(morgan("tiny"));
 
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "client/build")));
+
 const twitterCli = new Twitter({
   consumer_key: process.env.consumer_key,
   consumer_secret: process.env.consumer_secret,
