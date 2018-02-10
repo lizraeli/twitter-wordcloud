@@ -35,16 +35,20 @@ class App extends Component {
           word => !stopWords.includes(word.toLowerCase())
         );
         // convert array of words to a map
-        // { word: frequency, word: frequency, ... }
+        // { [word1]: frequency, [word2]: frequency, ... }
         const wordMap = makeWordMap(words);
-        // convert map to an array of key-value pairs
-        //[ { word: frequency }, { word: frequency }, ...]
+
+        // convert map to an array of {text, value} pairs
+        // [ { text, value }, { text, value }, ...]
         const wordPairs = wordMapToPairs(wordMap);
+
+        // filter the array to keep words that appear more then once
+        const filteredPairs = wordPairs.filter(pair => pair.value > 1);
 
         this.setState({
           fetching: false,
           handle,
-          wordPairs
+          wordPairs: filteredPairs
         });
       })
       .catch(err => {

@@ -21,7 +21,7 @@ export const makeWordMap = words =>
 /**
  * @function wordMapToPairs
  * @param  {Object.<string, number>} wordMap
- * @return {Object.<string, number>[]}
+ * @return {{text: string, value: number}[]}
  */
 export const wordMapToPairs = wordMap =>
   Object.keys(wordMap).map(key => ({
